@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jf.wj.demo.dao.UserDao">
+
+    <!--获取用户信息-->
+    <select id="queryUserById" resultType="com.jf.wj.demo.entity.User">
+              SELECT
+            user_id AS userId,
+            user_name AS userName,
+            sex,
+            phone,
+            `password`
+        FROM
+            `t_user`
+        WHERE
+            user_id = #{userId}
+    </select>
+    <select id="queryUserByMultiFields" resultType="com.jf.wj.demo.entity.User">
+          SELECT
+            user_id AS userId,
+            user_name AS userName,
+            sex,
+            phone,
+            `password`
+        FROM
+            `t_user`
+        WHERE
+            user_id = #{param1}  AND password = #{param2}
+    </select>
+    <select id="queryUserByParamId" resultType="com.jf.wj.demo.entity.User">
+           SELECT
+            user_id AS userId,
+            user_name AS userName,
+            sex,
+            phone,
+            `password`
+        FROM
+            `t_user`
+        WHERE
+            user_id = #{userId}
+    </select>
+
+    <select id="queryUserByParamMultiField" resultType="com.jf.wj.demo.entity.User">
+        SELECT
+            user_id AS userId,
+            user_name AS userName,
+            sex,
+            phone,
+            `password`
+        FROM
+            `t_user`
+        WHERE
+            user_id = #{userId}  AND password = #{password}
+    </select>
+    <!--获取系统历史访问人数-->
+    <select id="queryUserByBean" resultType="com.jf.wj.demo.entity.User">
+        SELECT
+            user_id AS userId,
+            user_name AS userName,
+            sex,
+            phone,
+            `password`
+        FROM
+            `t_user`
+        WHERE
+            user_id = #{userId}  AND password = #{password}
+    </select>
+
+    <select id="queryUserByMap" resultType="com.jf.wj.demo.entity.User">
+        SELECT
+            user_id AS userId,
+            user_name AS userName,
+            sex,
+            phone,
+            `password`
+        FROM
+            `t_user`
+        WHERE
+            user_id = #{userId}  AND password = #{password}
+    </select>
+
+</mapper>
