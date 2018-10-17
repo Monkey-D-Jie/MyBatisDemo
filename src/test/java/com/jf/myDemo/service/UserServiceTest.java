@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,10 +31,35 @@ import java.util.Map;
  * @RunWith(SpringJUnit4ClassRunner.class)
  * @RunWith 注释标签是 Junit 提供的，用来说明此测试类的运行者，这里用了 SpringJUnit4ClassRunner，这个类是一个针对 Junit 运行环境的自定义扩展，用来标准化在 Spring 环境中 Junit4.5 的测试用例，例如支持的注释标签的标准化
  @ContextConfiguration({"classpath:spring的配置文件"})
-
+ @ContextConfiguration 注释标签是 Spring test context 提供的，用来指定 Spring 配置信息的来源，支持指定 XML 文件位置或者 Spring 配置类名，这里我们指定 classpath 下的 /config/Spring-db1.xml 为配置文件的位置
+ Note:当用多个xml文件要加载时，可以写成下面这种
+ @ContextConfiguration(locations = { "classpath*:/spring1.xml", "classpath*:/spring2.xml" })
+ ----延伸拓展
+ @Transactional 注释标签是表明此测试类的事务启用，这样所有的测试方案都会自动的 rollback，即您不用自己清除自己所做的任何对数据库的变更了
+ 还支持testNG的测试，更多的内容请参考（上述注解说明也来源于下方链接）
+ 使用 Spring 进行单元测试
+ https://www.ibm.com/developerworks/cn/java/j-lo-springunitest/index.html
+ 2.手动加载
+ ApplicationContext context = new FileSystemXmlApplicationContext("WebRoot/WEB-INF/applicationContext.xml");
+ new ClassPathXmlApplicationContext("applicationContext.xml");// 从classpath中加载
+ new FileSystemXmlApplicationContext("classpath:地址");// 没有classpath表示当前
+ eg:
+ // 加载spring与数据库配置的部分得到DataSource
+ // ==>位置是resources下面的
+ ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-config.xml");
+ DataSource ds = (DataSource) context.getBean("dataSource");
+ Connection connection = ds.getConnection();
+ 同理，也能通过这种方法获得Service类，然后调用对应的方法
+ xxService service = (xxService) context.getBean("xxService");
+ 前提是要把service，dao，entity等通过IOC交给Spring去管理
+ ---------------------
+ 作者：陈平寨黄山赵子龙
+ 来源：CSDN
+ 原文：https://blog.csdn.net/qq_25615395/article/details/78105097?utm_source=copy
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring-core.xml"})
+@Transactional
 public class UserServiceTest {
     /**
      * 打印日志用logger-用debug级别
