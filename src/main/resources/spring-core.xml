@@ -5,5 +5,5 @@
     <import resource="spring-dao.xml"/>
     <import resource="spring-service.xml"/>
     <!--引入redis的配置文件-->
-    <!--<import resource="spring-redis.xml"/>-->
+    <import resource="spring-redis.xml"/>
 </beans>

@@ -39,10 +39,24 @@ public class UserServiceImpl  implements UserService{
     }
 
     @Override
+    public User fetchUserBySingleObeject(User user) {
+        User user2 = this.userDao.queryUserBySingleObject(user);
+        LOGGER.debug("fetchUserBySingleObeject查询到的用户为:"+user2.toString());
+        return user2;
+    }
+
+    @Override
     public User fetchUserByMultiFields(String userId, String password) {
         User user = this.userDao.queryUserByMultiFields(userId,password);
         LOGGER.debug("fetchUserByMultiFields查询到的用户为:"+user.toString());
         return user;
+    }
+
+    @Override
+    public User fetchUserByMultiFieldsOrObjects(String userId, User user) {
+        User findeUser = this.userDao.queryUserByMultiFieldsOrObjects(userId,user);
+        LOGGER.debug("fetchUserByMultiFieldsOrObjects查询到的用户为:"+findeUser.toString());
+        return findeUser;
     }
 
     @Override

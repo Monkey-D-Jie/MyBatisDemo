@@ -15,6 +15,20 @@
         WHERE
             user_id = #{userId}
     </select>
+
+    <select id="queryUserBySingleObject" resultType="com.jf.wj.demo.entity.User">
+        SELECT
+        user_id AS userId,
+        user_name AS userName,
+        sex,
+        phone,
+        `password`
+        FROM
+        `t_user`
+        WHERE
+        user_id = #{userId}
+    </select>
+
     <select id="queryUserByMultiFields" resultType="com.jf.wj.demo.entity.User">
           SELECT
             user_id AS userId,
@@ -27,6 +41,21 @@
         WHERE
             user_id = #{param1}  AND password = #{param2}
     </select>
+
+    <select id="queryUserByMultiFieldsOrObjects" resultType="com.jf.wj.demo.entity.User">
+        SELECT
+        user_id AS userId,
+        user_name AS userName,
+        sex,
+        phone,
+        `password`
+        FROM
+        `t_user`
+        WHERE
+        user_id = #{param1}  AND password = #{1.password}
+    </select>
+
+
     <select id="queryUserByParamId" resultType="com.jf.wj.demo.entity.User">
            SELECT
             user_id AS userId,

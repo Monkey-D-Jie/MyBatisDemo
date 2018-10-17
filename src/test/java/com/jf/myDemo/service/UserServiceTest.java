@@ -110,7 +110,7 @@ public class UserServiceTest {
          这种情况下可以直接省去parameterType类型的声明。但是，为了可读性，最好还是给加上
          */
         /*——————————————————————————————————————*/
-        User resultUser = this.userService.fetchUserById(userId);
+//        User resultUser = this.userService.fetchUserById(userId);
         /**
          *  * fetchUserByMultiFields
          * 测试结果记录
@@ -118,10 +118,13 @@ public class UserServiceTest {
          * ---在xml直接用 #{param1},#{param2}ok；
          * ---用#{0}，#{1}来接收呢？ok
          *---用#{userId}，#{password}呢？no---》这种情况下会失败，报错提示的内容为
-         * Available parameters are [0, 1, param1, param2]
+         * Available parameters are [0, 1, param1, param2]c
          * 即上面的两种方式、
+         *  [0, 1, param1, param2]还能直接被作为对象来用，即下方的fetchUserByMultiFieldsOrObjects方法
+         *  取值的时候，用param1.对象属性或者0.对象属性就可以了
          */
 //        this.userService.fetchUserByMultiFields(userId,password);
+        this.userService.fetchUserByMultiFieldsOrObjects(userId,user);
         /*——————————————————————————————————————*/
         /**
          * fetchUserByParamId

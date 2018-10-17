@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <!--注入控制层包-->
-    <context:component-scan base-package="com.jf.myDemo.controller"/>
+    <context:component-scan base-package="com.jf.wj.demo.controller"/>
     <!--<mvc:default-servlet-handler/>-->
     <!--<spring class="com.sc.jf.is.service.InstantiationTracingBeanPostProcessor"/>-->
     <!--配置页面的JSON数据格式与编码-->
@@ -25,9 +25,9 @@
     </mvc:annotation-driven>
 
     <!--引入静态文件-->
-    <mvc:resources mapping="/resources/images/**" location="/resources/images" cache-period="31556926"/>
-    <mvc:resources mapping="/static/js/**" location="/static/js/" cache-period="31556926"/>
-    <mvc:resources mapping="static/js/layui/css/**" location="static/js/layui/css/" cache-period="31556926"/>
+    <!--<mvc:resources mapping="/resources/images/**" location="/resources/images" cache-period="31556926"/>-->
+    <!--<mvc:resources mapping="/static/js/**" location="/static/js/" cache-period="31556926"/>-->
+    <!--<mvc:resources mapping="static/js/layui/css/**" location="static/js/layui/css/" cache-period="31556926"/>-->
 
 
     <!--API接口跨域配置-->

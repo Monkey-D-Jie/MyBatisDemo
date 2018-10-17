@@ -21,7 +21,12 @@ public interface UserService {
      * @return
      */
     User fetchUserById(String userId);
-
+    /**
+     * 单字段
+     * @param userId
+     * @return
+     */
+    User fetchUserBySingleObeject(User user);
     /**
      * 多字段查询
      * @param userId
@@ -30,7 +35,7 @@ public interface UserService {
      */
     User fetchUserByMultiFields(String userId, String password);
 
-
+    User fetchUserByMultiFieldsOrObjects(String userId, User user);
     /**
      * 单字段-加了@Param注解
      * @param userId

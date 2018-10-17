@@ -23,6 +23,12 @@ public interface UserDao {
     User queryUserById(String userId);
 
     /**
+     * 单个对象
+     * @param user
+     * @return
+     */
+    User queryUserBySingleObject(User user);
+    /**
      * 多字段查询
      * @param userId
      * @param password
@@ -30,7 +36,13 @@ public interface UserDao {
      */
     User queryUserByMultiFields(String userId, String password);
 
-
+    /**
+     * 多字段或者对象
+     * @param userId
+     * @param user
+     * @return
+     */
+    User queryUserByMultiFieldsOrObjects(String userId, User user);
     /**
      * 单字段-加了@Param注解
      * @param userId
