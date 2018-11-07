@@ -3,7 +3,7 @@
 <mapper namespace="com.jf.wj.demo.dao.UserDao">
 
     <!--获取用户信息-->
-    <select id="queryUserById" resultType="com.jf.wj.demo.entity.User">
+    <select id="queryUserById" parameterType="string" resultType="com.jf.wj.demo.entity.User">
               SELECT
             user_id AS userId,
             user_name AS userName,

@@ -20,7 +20,7 @@ public interface UserDao {
      * @param userId
      * @return
      */
-    User queryUserById(String userId);
+    User queryUserById(@Param("userId") String userId);
 
     /**
      * 单个对象
